@@ -1,7 +1,13 @@
+// Search in 2D array II (problem 240)
+// Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+// Integers in each row are sorted in ascending from left to right.
+// Integers in each column are sorted in ascending from top to bottom.
+ 
 #include <iostream>
 #include <vector>
 using namespace std;
 
+//this solution will have O(n+m) time complexity
 class Solutions{
     public:
         bool searchMatrix(vector<vector<int>> &matrix, int target){

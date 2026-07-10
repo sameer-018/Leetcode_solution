@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 //this solution will have O(n^2) time complexity
@@ -21,6 +22,24 @@ class Solution{
             }
             return {0,1};
         }
+};
+
+//this solution will have O(n) time complexity;
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> mp; //map key as subs and value as index
+        int subs;
+        for(int i=0; i<nums.size(); i++){
+            subs = target-nums[i];
+            if(mp.find(subs) != mp.end()){
+                return {mp[subs],i};
+            }
+            mp[nums[i]]=i;
+        }
+
+        return{0,1};
+    }
 };
 
 int main(){

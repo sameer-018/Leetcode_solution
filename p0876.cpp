@@ -3,6 +3,8 @@
 // Given the head of a singly linked list, return the middle node of the linked list.
 // If there are two middle nodes, return the second middle node.
 
+//tortoise and Hare algorithm
+
 #include <iostream>
 using namespace std;
 
@@ -21,22 +23,13 @@ class Solution
 public:
     ListNode *middleNode(ListNode *head)
     {
-        ListNode *mover = head;
-        int count = 0;
-        while (mover)
-        {
-            count++;
-            mover = mover->next;
+       ListNode *slow = head;
+        ListNode *fast = head;
+        while(fast->next && fast->next->next){
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        int mid;
-        mid = count / 2 + 1;
-        count = 0;
-        mover = head;
-        while (count != mid - 1)
-        {
-            count++;
-            mover = mover->next;
-        }
-        return mover;
+        if(!fast->next) return slow;
+        else return slow->next;
     }
 };

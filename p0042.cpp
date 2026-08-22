@@ -35,3 +35,27 @@ public:
         return ans;
     }
 };
+
+// timecomplexity O(n) spacecomplexity O(1)
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int ans = 0;
+        int i=0, j=n-1;
+        int L=height[i], R=height[j];
+        while(i<j){
+            if(L<height[i]) L=height[i];
+            if(R<height[j]) R=height[j];
+            if(height[i]<height[j]){
+                if(L>height[i] && R>height[i]) ans += min(L, R)-height[i];
+                i++;
+            }
+            else{
+                if(L>height[j] && R>height[j]) ans += min(L, R)-height[j];
+                j--;
+            }
+        }
+        return ans;
+    }
+};
